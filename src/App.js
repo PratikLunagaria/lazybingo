@@ -71,7 +71,7 @@ function App() {
 			</div>
 			<Transition appear show={animateWin} as={Fragment}>
 				<Dialog as="div" className="fixed inset-0 z-10 overflow-y-auto" onClose={() => setAnimateWin(false)}>
-					<div className="min-h-screen px-4 text-center">
+					<div className="min-h-screen min-w-screen px-4 text-center">
 						<Transition.Child
 							as={Fragment}
 							enter="ease-out duration-300"
