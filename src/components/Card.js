@@ -1,32 +1,22 @@
-import { Transition } from '@headlessui/react';
-import { Fragment, useState } from 'react';
-import { useTimeoutFn } from 'react-use';
-
-const Card = ({ title, image }) => {
-	let [ isShowing, setIsShowing ] = useState(true);
-	let [ , , resetIsShowing ] = useTimeoutFn(() => setIsShowing(true), 500);
+const Card = ({ title, image, id, checked, streak, toggleCard }) => {
 	return (
 		<button
-			className="col-span-1 row-span-1 w-full h-full square rounded-2xl flex items-end justify-center relative"
+			className={`col-span-1 row-span-1 w-full h-full square flex items-center rounded-t-3xl justify-center relative bg-black hover:border-gray-900 ring-inset  ring-8 border-8 border-b-0 border-black ${streak
+				? 'ring-green-500'
+				: checked ? 'ring-white' : 'ring-transparent'}`}
 			onClick={() => {
-				setIsShowing(false);
-				resetIsShowing();
+				if (id !== 13) {
+					toggleCard(id);
+				}
 			}}>
-			<div className="w-full h-full bg-white shadow-lg">
-				<img src={image} alt="title" className="w-full h-full object-cover" />
+			<div className="w-full h-full shadow-lg rounded-t-3xl">
+				<img src={image} alt="title" className="w-full h-full object-cover p-1.5 rounded-t-2xl" />
 			</div>
-			<div className="w-full h-full absolute inset-0  flex flex-col bg-gradient-to-b from-transparent to-gray-900 justify-end">
-				<Transition
-					as={Fragment}
-					show={isShowing}
-					enter="transform transition duration-[400ms]"
-					enterFrom="opacity-0 rotate-[-120deg] scale-50"
-					enterTo="opacity-100 rotate-0 scale-100"
-					leave="transform duration-200 transition ease-in-out"
-					leaveFrom="opacity-100 rotate-0 scale-100 "
-					leaveTo="opacity-0 scale-95 ">
-					<div className="text-white text-xl font-bold text-shadow">{title}</div>
-				</Transition>
+			<div
+				className={`w-full h-full absolute inset-0  flex flex-col bg-gradient-to-b from-transparent hover:to-gray-900 justify-end ${streak
+					? 'to-green-500'
+					: checked ? 'to-gray-800' : 'to-black '}`}>
+				<div className="text-white text-xl font-bold text-shadow p-2">{title}</div>
 			</div>
 		</button>
 	);
