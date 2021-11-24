@@ -1,3 +1,8 @@
+import bingowin1 from '../data/gifs/bingowin1.gif';
+import bingowin2 from '../data/gifs/bingowin2.gif';
+import bingowin3 from '../data/gifs/bingowin3.gif';
+import bingowin4 from '../data/gifs/bingowin4.gif';
+
 export const findVerticalSiblings = (card, records) => records.filter((elem) => elem.coords[1] === card.coords[1]);
 
 export const findHorizontalSiblings = (card, records) => records.filter((elem) => elem.coords[0] === card.coords[0]);
@@ -38,3 +43,12 @@ export const uniqueRecords = (data) => {
 	});
 	return unique;
 };
+
+export const getRandomIntInclusive = (min, max) => {
+	min = Math.ceil(min);
+	max = Math.floor(max);
+	return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+};
+
+const imgArr = [ bingowin1, bingowin2, bingowin3, bingowin4 ];
+export const winnerImg = () => imgArr[getRandomIntInclusive(0, 3)];

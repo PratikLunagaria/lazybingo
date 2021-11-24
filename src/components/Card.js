@@ -16,7 +16,7 @@ const Card = ({ title, image, id, checked, streak, toggleCard }) => {
 				className={`w-full h-full absolute inset-0  flex flex-col bg-gradient-to-b from-transparent hover:to-gray-900 justify-end ${streak
 					? 'to-green-500'
 					: checked ? 'to-gray-800' : 'to-black '}`}>
-				<div className="text-white text-xl font-bold text-shadow p-2">{title}</div>
+				<div className=" text-white font-bold text-shadow p-2 xs:text-xs">{title}</div>
 			</div>
 		</button>
 	);
